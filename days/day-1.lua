@@ -1,13 +1,6 @@
-local function get_lists(file)
-    local f = io.open(file, 'r')
-    
-    if not f then return nil end
-    local content = f:read('*a')
-    f:close()
-    return content
-end
+local utils = require 'utils'
 
-local lines = get_lists('./days/day-1.txt');
+local lines = utils.get_lists('./days/day-1.txt');
 
 if not lines then return end
 local list_1 = {}
@@ -25,6 +18,7 @@ local solution = 0;
 for k,v in ipairs(list_1) do
     solution = solution + math.abs(v - list_2[k])
 end
+print('Day 1: Part 1');
 print(solution)
 
 local function count_items(t, value)
@@ -41,5 +35,6 @@ solution = 0
 for _,v in ipairs(list_1) do
     solution = solution + count_items(list_2, v)
 end
+print('Day 1: Part 2')
 print(solution)
 
